@@ -1,0 +1,33 @@
+/* body */
+body{
+    overflow-x: auto;
+    overflow-y: scroll;
+    background: #f7f8fc;
+    min-width: 1024px;
+}
+/* 顶部容器 */
+#top-wrapper{
+    position: fixed;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: hsla(0,0%,100%,.9);
+    max-width: 1920px;
+    min-width: 1024px;
+    z-index: 9999;
+    will-change: top;
+    transition: top .6s;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rebeccapurple;
+}
+/* 主容器 */
+#main-wrapper{
+    flex: 1;
+    width: 0;
+    padding: 0 4%;
+    background: #f7f8fc;
+}
