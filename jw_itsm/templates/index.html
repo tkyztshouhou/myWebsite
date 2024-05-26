@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运维平台</title>
+    <link rel="stylesheet" href="../static/index.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">工作台</a></li>
+                <li><a href="#" data-url="server-list.html" data-target="server-list">主机管理</a></li>
+                <li><a href="#">批量执行</a></li>
+                <li><a href="#" data-url="app-release.html" data-target="app-release">应用发布</a></li>
+                <li><a href="#">任务计划</a></li>
+                <li><a href="#">配置中心</a></li>
+                <li><a href="#">监控中心</a></li>
+                <li><a href="#">报警中心</a></li>
+                <li><a href="#">系统管理</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="app-release" class="content">
+            <!-- 初始为空 -->
+        </div>
+        <div id="server-list" class="content">
+            <!-- 初始为空 -->
+        </div>
+        <section class="welcome-message">
+            <h2>系统概览</h2>
+        </section>
+        <section class="dashboard">
+            <div class="status-indicators">
+                <div class="indicator">
+                    <span class="title">主机：</span>
+                    <span class="value">50</span>
+                </div>
+                <div class="indicator">
+                    <span class="title">在线：</span>
+                    <span class="value">48</span>
+                </div>
+                <div class="indicator">
+                    <span class="title">警告：</span>
+                    <span class="value" style="color: orange;">2</span>
+                </div>
+                <div class="indicator">
+                    <span class="title">错误：</span>
+                    <span class="value" style="color: red;">0</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="recent-events">
+            <h2>最近事件</h2>
+            <ul>
+                <li>2023-05-09 14:30 - 服务器A内存警告</li>
+                <li>2023-05-09 12:15 - 更新服务器B操作系统补丁</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 服务器运维平台. All rights reserved</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var navLinks = document.querySelectorAll('nav ul li a');
+
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', async function(event) {
+                    event.preventDefault();
+                    var url = this.getAttribute('data-url');
+                    var targetContent = this.getAttribute('data-target');
+                    // 清空当前显示的内容
+                    var contents = document.querySelectorAll('.content');
+                    for (var i = 0; i < contents.length; i++) {
+                        contents[i].innerHTML = '';
+                        contents[i].style.display = 'none';
+                    }
+                    // 加载外部HTML内容
+                    try {
+                        const response = await fetch(url);
+                        if (!response.ok) {
+                            throw new Error(`请求失败: ${response.status}`);
+                        }
+                        const html = await response.text();
+                        // 插入内容到目标元素
+                        document.getElementById(targetContent).innerHTML = html;
+                        document.getElementById(targetContent).style.display = 'block';
+                    } catch (error) {
+                        console.error('加载内容时出错:', error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
