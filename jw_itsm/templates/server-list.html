@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运维平台</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="server-list.html">主机管理</a></li>
+                <li><a href="#">应用发布</a></li>
+                <!-- <li><a href="#" data-url="server-list.html" data-target="server-list">主机管理</a></li> -->
+                <li><a href="#">批量执行</a></li>
+                <!-- <li><a href="#" data-url="app-release.html" data-target="app-release">应用发布</a></li> -->
+                <li><a href="#">任务计划</a></li>
+                <li><a href="#">配置中心</a></li>
+                <li><a href="#">监控中心</a></li>
+                <li><a href="#">报警中心</a></li>
+                <li><a href="#">系统管理</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>主机名</th>
+                    <th>IP地址</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2024 服务器运维平台. All rights reserved</p>
+    </footer>
+</body>
+</html>
