@@ -1,24 +1,25 @@
-<!-- 使用html、css、原生js写一个服务器运维平台的登陆页面 -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>运维平台</title>
-    <link rel="stylesheet" href="../static/index.css">
+    <link rel="stylesheet" href="{% static '/css/login.css' %}">
 </head>
 <body>
     <div class="login-container">
         <h1>运维平台</h1>
-        <form id="login-form">
-            <label for="username">用户名：</label>
-            <input type="text" id="username" required>
-            <label for="password">密码：</label>
-            <input type="password" id="password" required>
-            <button type="submit">登录</button>
+        <form id="login-form"  action="process" method="post">
+            {% csrf_token %}
+            <span>用户名: </span>
+            <input type="text" name="username" />
+            <span>密码: </span>
+            <input type="password" name="password" />
+            <input type="submit" value="登录" />
         </form>
     </div>
-    <script>// scripts.js
+    <!-- <script>// scripts.js
         document.getElementById('login-form').addEventListener('submit', function(e) {
             e.preventDefault(); // 阻止默认的表单提交行为
         
@@ -32,6 +33,6 @@
             // 在实际应用中，此处应调用API进行登录验证
             alert('登录成功！'); // 模拟登录成功提示
         });
-    </script>
+    </script> -->
 </body>
 </html>

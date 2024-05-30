@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -118,7 +119,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/' # 这是静态文件的URL前缀，默认即可，也可以根据需要修改。
+
+
+# 以下可选，用于指定静态文件的搜索目录，Django在开发模式下会自动使用它。
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # 假设你有一个位于项目根目录下的'static'文件夹存放静态文件。
+]
+
+# 用于指定静态文件收集后的位置，生产环境部署时使用。
+# STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')  # 部署时静态文件收集的目录。
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
